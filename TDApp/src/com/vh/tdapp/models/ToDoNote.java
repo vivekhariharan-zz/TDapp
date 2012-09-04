@@ -38,7 +38,4 @@ public class ToDoNote {
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
-	
-	
-
 }

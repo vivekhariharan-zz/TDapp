@@ -14,7 +14,7 @@ public abstract class ToDoItemSchema {
 
 	private static String[] COLUMNS = { ID, TITLE, PRIORITY, DUE_DATE };
 
-	private static final String TABLE_CREATE = "create table " + NAME + " ( "
+	public static final String TABLE_CREATE = "create table " + NAME + " ( "
 			+ ID + " integer primary key autoincrement, " + TITLE + " text not null, " + PRIORITY + " integer not null,"
 			+ DUE_DATE + " date)";
 
