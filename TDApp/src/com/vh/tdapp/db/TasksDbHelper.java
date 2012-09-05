@@ -1,6 +1,6 @@
 package com.vh.tdapp.db;
 
-import com.vh.tdapp.db.schemas.ToDoItemSchema;
+import com.vh.tdapp.db.schemas.TaskSchema;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +16,7 @@ public class TasksDbHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(ToDoItemSchema.TABLE_CREATE);	
+		db.execSQL(TaskSchema.TABLE_CREATE);	
 
 	}
 
