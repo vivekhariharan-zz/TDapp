@@ -6,10 +6,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DbHelper extends SQLiteOpenHelper {
+public class TasksDbHelper extends SQLiteOpenHelper {
 	
 	String databaseName;
-	public DbHelper(Context context, String databaseName, int databaseVersion) {
+	public TasksDbHelper(Context context, String databaseName, int databaseVersion) {
 		super(context, databaseName, null, databaseVersion);
 		this.databaseName = databaseName;
 	}
