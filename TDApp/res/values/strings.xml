@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TDApp</string>
+    <string name="complete_str">Complete?</string>
+    <string name="task_title_str">Task</string>
+    <string name="priority_str">Priority</string>
+    <string name="days_left_str"># of Days Left</string>
 </resources>
