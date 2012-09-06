@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background-yellow" >
+
+    <RelativeLayout
+        android:id="@+id/inner_box"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black"
+        android:gravity="center"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:id="@+id/header_box"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="top"
+             >
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/list_box"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/header_box">
+            <ListView 
+                android:id="@+id/task_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                
+                
+            </ListView>
+            
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
