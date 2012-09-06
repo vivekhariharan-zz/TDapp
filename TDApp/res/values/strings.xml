@@ -4,4 +4,5 @@
     <string name="task_title_str">Task</string>
     <string name="priority_str">Priority</string>
     <string name="days_left_str"># of Days Left</string>
+    <string name="add_button_str">Add Task</string>
 </resources>
