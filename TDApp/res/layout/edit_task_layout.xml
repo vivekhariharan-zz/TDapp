@@ -1,8 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@color/background_yellow">
     
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:background="@color/black"
+        android:layout_gravity="center">
+        <TextView 
+            android:id="@+id/title_text"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:textColor="@color/background_yellow"/>
+        
+        <LinearLayout 
+            android:layout_margin="3dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.45"
+                android:gravity="center"
+                android:textColor="@color/background_yellow"
+                android:text="@string/task_title_edit_str"/>
+            <EditText 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.55"
+                android:layout_margin="3dp"
+                android:hint=""
+                android:background="@color/white"/>
+            
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_margin="3dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.45"
+                android:gravity="center"
+                android:singleLine="false"
+                android:lines="4"
+                android:textColor="@color/background_yellow"
+                android:text="@string/description_edit_str"/>
+            <EditText 
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.55"
+                android:layout_margin="3dp"
+                android:background="@color/white"
+                android:hint=""/>
+            
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="3dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.45"
+                android:layout_margin="3dp"
+                android:gravity="center"
+                android:textColor="@color/background_yellow"
+                android:text="@string/priority_edit_str"/>
+            
+            
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_margin="3dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.45"
+                android:layout_margin="3dp"
+                android:gravity="center"
+                android:textColor="@color/background_yellow"
+                android:text="@string/due_date_edit_str"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.55"
+                android:layout_margin="3dp"
+                android:textColor="@color/background_yellow"
+                android:text="@string/due_date_button_str"
+                />
+            
+        </LinearLayout>
+        
+    </LinearLayout>    
 
 </LinearLayout>

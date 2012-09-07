@@ -5,4 +5,13 @@
     <string name="priority_str">Priority</string>
     <string name="days_left_str"># of Days Left</string>
     <string name="add_button_str">Add Task</string>
+    <string name="due_date_edit_str">Due Date</string>
+    <string name="due_date_button_str">Choose Due Date</string>
+    <string name="priority_edit_str">Set Priority</string>
+    
+    <string name="description_edit_str">Set Tasks Description</string>
+    
+    <string name="task_title_edit_str">Set Task Title</string>
+   
+    
 </resources>

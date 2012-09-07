@@ -8,4 +8,5 @@ Allows user to strike tasks that they have completed.
 
 App by Vivek Hariharan
 
-
+Note: This app makes use of the numpicker Android UI element that is found here
+https://github.com/novak/numpicker-demo
