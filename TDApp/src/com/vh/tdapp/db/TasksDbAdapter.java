@@ -85,27 +85,35 @@ public class TasksDbAdapter {
 	public ArrayList<Task> getAllTasks() {
 		Cursor returnedData;
 		ArrayList<Task> listOfTasks = new ArrayList<Task>();
-		returnedData = database.query(TaskSchema.NAME, new String[] {TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION, TaskSchema.PRIORITY, TaskSchema.DUE_DATE}, null, null, null, null, null, null);
-		
-		while(returnedData.moveToNext())
-		{
+		returnedData = database.query(TaskSchema.NAME, new String[] {
+				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
+				TaskSchema.PRIORITY, TaskSchema.DUE_DATE }, null, null, null,
+				null, null, null);
+
+		while (returnedData.moveToNext()) {
 			Task currentTask;
-			int id = returnedData.getInt(returnedData.getColumnIndexOrThrow(TaskSchema.ID));
-			String dueDateStr = returnedData.getString(returnedData.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
+			int id = returnedData.getInt(returnedData
+					.getColumnIndexOrThrow(TaskSchema.ID));
+			String dueDateStr = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
 			Date dueDate = null;
 			try {
-				dueDate = 	(Date) DateFormat.getInstance().parse(dueDateStr);
+				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
 			} catch (ParseException e) {
-				Log.d(LOG_TAG,"Error: problem with parsing date");
+				Log.d(LOG_TAG, "Error: problem with parsing date");
 				e.printStackTrace();
 			}
-			int priority = returnedData.getInt(returnedData.getColumnIndexOrThrow(TaskSchema.PRIORITY));
-			String taskTitle = returnedData.getString(returnedData.getColumnIndexOrThrow(TaskSchema.TITLE));
-			String taskDescription = returnedData.getString(returnedData.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
-			currentTask = new Task(id, taskDescription, taskTitle, priority, dueDate);
+			int priority = returnedData.getInt(returnedData
+					.getColumnIndexOrThrow(TaskSchema.PRIORITY));
+			String taskTitle = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.TITLE));
+			String taskDescription = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
+			currentTask = new Task(id, taskDescription, taskTitle, priority,
+					dueDate);
 			listOfTasks.add(currentTask);
 		}
-		
+
 		return listOfTasks;
 	}
 

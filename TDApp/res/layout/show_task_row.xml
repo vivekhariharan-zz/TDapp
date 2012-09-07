@@ -3,29 +3,29 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
-    
-    <CheckBox 
+
+    <CheckBox
         android:id="@+id/is_complete"
         android:layout_width="50dp"
         android:layout_height="fill_parent"
-        android:padding="5dp"
-        android:gravity="center"/>
-    
-    <TextView 
+        android:gravity="center"
+        android:padding="5dp" />
+
+    <TextView
         android:id="@+id/title_text"
         android:layout_width="170dp"
         android:layout_height="fill_parent"
         android:layout_gravity="center"
-        android:gravity="center"/>
-    
-    <TextView 
+        android:gravity="center" />
+
+    <TextView
         android:id="@+id/priority"
         android:layout_width="50dp"
-        android:layout_height="fill_parent"/>
-    
-    <TextView 
+        android:layout_height="fill_parent" />
+
+    <TextView
         android:id="@+id/days_left"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>   
+        android:layout_height="fill_parent" />
 
 </LinearLayout>

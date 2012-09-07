@@ -13,7 +13,7 @@ public abstract class TaskSchema {
 	public static final String DUE_DATE = "due_date";
 
 	public static final String DESCRIPTION = "description";
-	
+
 	public static final String TABLE_CREATE = "create table " + NAME + " ( "
 			+ ID + " integer primary key autoincrement, " + TITLE
 			+ " text not null, " + DESCRIPTION + " text, " + PRIORITY

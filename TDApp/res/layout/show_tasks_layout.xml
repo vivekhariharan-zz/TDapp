@@ -65,7 +65,7 @@
 
         <LinearLayout
             android:id="@+id/button_box"
-            android:layout_width="fill_parent"            
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/list_box" >
 
@@ -73,11 +73,9 @@
                 android:id="@+id/add_task_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginLeft="200dp"
-                android:text="@string/add_button_str"
-                />
-
+                android:gravity="center"
+                android:text="@string/add_button_str" />
         </LinearLayout>
     </RelativeLayout>
 

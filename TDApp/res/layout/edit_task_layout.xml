@@ -2,108 +2,134 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="@color/background_yellow">
-    
-    <LinearLayout 
+    android:background="@color/background_yellow"
+    android:orientation="vertical" >
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_margin="5dp"
         android:background="@color/black"
-        android:layout_gravity="center">
-        <TextView 
+        android:orientation="vertical" >
+
+        <TextView
             android:id="@+id/title_text"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:textColor="@color/background_yellow"/>
-        
-        <LinearLayout 
-            android:layout_margin="3dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="0.45"
-                android:gravity="center"
-                android:textColor="@color/background_yellow"
-                android:text="@string/task_title_edit_str"/>
-            <EditText 
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.55"
-                android:layout_margin="3dp"
-                android:hint=""
-                android:background="@color/white"/>
-            
-        </LinearLayout>
-        <LinearLayout 
-            android:layout_margin="3dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="0.45"
-                android:gravity="center"
-                android:singleLine="false"
-                android:lines="4"
-                android:textColor="@color/background_yellow"
-                android:text="@string/description_edit_str"/>
-            <EditText 
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.55"
-                android:layout_margin="3dp"
-                android:background="@color/white"
-                android:hint=""/>
-            
-        </LinearLayout>
+            android:textColor="@color/background_yellow" />
+
         <LinearLayout
-            android:layout_margin="3dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="3dp"
+            android:orientation="horizontal" >
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.45"
                 android:layout_margin="3dp"
+                android:layout_weight="0.45"
                 android:gravity="center"
-                android:textColor="@color/background_yellow"
-                android:text="@string/priority_edit_str"/>
-            
-            
+                android:text="@string/task_title_edit_str"
+                android:textColor="@color/background_yellow" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.55"
+                android:background="@color/white"
+                android:hint="" />
         </LinearLayout>
-        <LinearLayout 
-            android:layout_margin="3dp"
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="3dp"
+            android:orientation="horizontal" >
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.45"
                 android:layout_margin="3dp"
+                android:layout_weight="0.45"
                 android:gravity="center"
-                android:textColor="@color/background_yellow"
-                android:text="@string/due_date_edit_str"/>
+                android:lines="4"
+                android:singleLine="false"
+                android:text="@string/description_edit_str"
+                android:textColor="@color/background_yellow" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.55"
+                android:background="@color/white"
+                android:hint="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.45"
+                android:gravity="center"
+                android:text="@string/priority_edit_str"
+                android:textColor="@color/background_yellow" />
+
+            <com.vh.tdapp.ui.NumberPicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="0.20"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="3dp"
+                android:layout_weight="0.45"
+                android:gravity="center"
+                android:text="@string/due_date_edit_str"
+                android:textColor="@color/background_yellow" />
+
             <Button
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.55"
                 android:layout_margin="3dp"
-                android:textColor="@color/background_yellow"
+                android:layout_weight="0.55"
                 android:text="@string/due_date_button_str"
-                />
-            
+                android:textColor="@color/background_yellow" />
         </LinearLayout>
-        
-    </LinearLayout>    
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="3dp" >
+
+            <Button
+                android:id="@+id/done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="100dp"
+                android:gravity="center"
+                android:text="@string/done_button_str" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
