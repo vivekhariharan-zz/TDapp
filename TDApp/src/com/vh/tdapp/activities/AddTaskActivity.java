@@ -1,6 +1,6 @@
 package com.vh.tdapp.activities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Calendar;
 
 import android.app.Activity;
@@ -41,9 +41,9 @@ public class AddTaskActivity extends Activity {
 
 		Calendar c = Calendar.getInstance();
 
-		Date currentDateTime = (Date) c.getTime();
+		Date currentDateTime = c.getTime();
 
-		dueDatePicker.setMinDate(currentDateTime.getTime());
+		//dueDatePicker.setMinDate(currentDateTime.getTime());
 
 		final AlertDialog.Builder builder = new Builder(this);
 
