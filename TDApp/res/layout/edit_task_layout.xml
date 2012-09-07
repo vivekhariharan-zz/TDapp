@@ -35,6 +35,7 @@
                 android:textColor="@color/background_yellow" />
 
             <EditText
+                android:id="@+id/task_title_text"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_margin="3dp"
@@ -61,6 +62,7 @@
                 android:textColor="@color/background_yellow" />
 
             <EditText
+                android:id="@+id/task_description_text"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_margin="3dp"
@@ -85,6 +87,7 @@
                 android:textColor="@color/background_yellow" />
 
             <com.vh.tdapp.ui.NumberPicker
+                android:id="@+id/task_priority_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -107,18 +110,22 @@
                 android:text="@string/due_date_edit_str"
                 android:textColor="@color/background_yellow" />
 
-            <Button
+            <DatePicker
+                android:id="@+id/set_due_date_picker" 
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_margin="3dp"
                 android:layout_weight="0.55"
+                android:spinnersShown="true"
                 android:text="@string/due_date_button_str"
-                android:textColor="@color/background_yellow" />
+                android:textColor="@color/background_yellow"/>
+            
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:weightSum="1"
             android:layout_margin="3dp" >
 
             <Button
@@ -126,9 +133,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="100dp"
+                android:layout_weight="0.5"
                 android:gravity="center"
+                android:textColor="@color/background_yellow"
                 android:text="@string/done_button_str" />
+            
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/background_yellow"
+                android:text="@string/cancel_button_str"
+                android:layout_weight="0.5"/>
         </LinearLayout>
     </LinearLayout>
 

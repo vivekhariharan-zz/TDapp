@@ -20,6 +20,14 @@ public class Task {
 		this.dueDate = dueDate;
 	}
 
+	public Task(String description, String taskTitle, int priority, Date dueDate) {
+		super();
+		this.description = description;
+		this.taskTitle = taskTitle;
+		this.priority = priority;
+		this.dueDate = dueDate;
+	}
+
 	public String getDescription() {
 		return description;
 	}

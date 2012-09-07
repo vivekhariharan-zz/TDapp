@@ -2,30 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:background="@color/black"
     android:orientation="horizontal" >
 
     <CheckBox
         android:id="@+id/is_complete"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:textColor="@color/background_yellow"
         android:padding="5dp" />
 
     <TextView
         android:id="@+id/title_text"
-        android:layout_width="170dp"
+        android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_gravity="center"
+        android:layout_weight="0.45"
+        android:textColor="@color/background_yellow"
         android:gravity="center" />
 
     <TextView
         android:id="@+id/priority"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
+        android:layout_weight="0.15"
+        android:textColor="@color/background_yellow"
         android:layout_height="fill_parent" />
 
     <TextView
         android:id="@+id/days_left"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
+        android:layout_weight="0.2"
+        android:textColor="@color/background_yellow"
         android:layout_height="fill_parent" />
 
 </LinearLayout>

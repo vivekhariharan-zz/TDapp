@@ -12,5 +12,6 @@
     <string name="description_edit_str">Tasks Description</string>
     <string name="task_title_edit_str">Task Title</string>
     <string name="done_button_str">Done</string>
+    <string name="cancel_button_str">Cancel</string>
 
 </resources>
