@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,12 +22,14 @@ import com.vh.tdapp.ui.NumberPicker;
 
 public class AddTaskActivity extends Activity {
 
-	TasksDbAdapter taskDatabase;
+	TasksDbAdapter taskDbAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_task_layout);
+		taskDbAdapter = new TasksDbAdapter(this);
+		taskDbAdapter.open();
 
 		TextView headText = (TextView) findViewById(R.id.title_text);
 		headText.setText("Add a new Task");
@@ -64,14 +67,17 @@ public class AddTaskActivity extends Activity {
 				if (taskTitle.getText().toString().trim() == "") {
 					builder.show();
 				} else {
-					@SuppressWarnings("deprecation")
-					Date dueDate = new Date(dueDatePicker.getYear(),
-							dueDatePicker.getMonth(), dueDatePicker
-									.getDayOfMonth());
+					Log.d("vivek debug", ""+dueDatePicker.getYear());
+					Date dueDate = new Date();
+					dueDate.setYear(dueDatePicker.getYear());
+					dueDate.setMonth(dueDatePicker.getMonth());
+					dueDate.setDate(dueDatePicker.getDayOfMonth());
+					
 					Task newTask = new Task(taskDescription.getText()
 							.toString(), taskTitle.getText().toString(),
 							priorityPicker.getCurrent(), dueDate);
-					taskDatabase.addTask(newTask);
+					taskDbAdapter.addTask(newTask);
+					taskDbAdapter.close();
 					finish();
 				}
 			}
@@ -82,9 +88,12 @@ public class AddTaskActivity extends Activity {
 		cancelButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				taskDbAdapter.close();
 				finish();
 			}
 		});
 	}
+	
+	
 
 }

@@ -17,5 +17,5 @@ public abstract class TaskSchema {
 	public static final String TABLE_CREATE = "create table " + NAME + " ( "
 			+ ID + " integer primary key autoincrement, " + TITLE
 			+ " text not null, " + DESCRIPTION + " text, " + PRIORITY
-			+ " integer not null," + DUE_DATE + " date)";
+			+ " integer not null," + DUE_DATE + " text)";
 }
