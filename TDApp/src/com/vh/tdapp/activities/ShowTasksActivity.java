@@ -67,7 +67,7 @@ public class ShowTasksActivity extends ListActivity {
 		
 		Button sortByPriorityButton = (Button)findViewById(R.id.sort_by_priority_button);
 		
-		sortByDateButton.setOnClickListener(new View.OnClickListener() {
+		sortByPriorityButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 

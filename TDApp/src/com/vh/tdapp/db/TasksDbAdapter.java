@@ -29,14 +29,12 @@ public class TasksDbAdapter {
 
 	public TasksDbAdapter(Context context) {
 		this.context = context;
-		
-
 	}
 
 	public TasksDbAdapter open() throws SQLException {
 		helper = new TasksDbHelper(context, databaseName, databaseVersion);
 		database = helper.getWritableDatabase();
-		
+
 		return this;
 	}
 
@@ -45,15 +43,14 @@ public class TasksDbAdapter {
 	}
 
 	public void addTask(Task newTask) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
 		ContentValues rowValues = new ContentValues();
 		// rowValues.put(TaskSchema.ID, newTask.getId());
 		rowValues.put(TaskSchema.TITLE, newTask.getTaskTitle());
 		rowValues.put(TaskSchema.DESCRIPTION, newTask.getDescription());
 		rowValues.put(TaskSchema.PRIORITY, newTask.getPriority());
-//		rowValues.put(TaskSchema.DUE_DATE,
-//				dateFormat.format(newTask.getDueDate()));
+		 rowValues.put(TaskSchema.DUE_DATE,
+		 dateFormat.format(newTask.getDueDate()));
 
 		long returnValue = database.insert(TaskSchema.NAME, null, rowValues);
 		if (returnValue == -1) {
@@ -63,14 +60,14 @@ public class TasksDbAdapter {
 
 	public void modifyTask(Task modifiedTask) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd HH:mm:ss");
+				"yy-MM-dd");
 		ContentValues rowValues = new ContentValues();
 		// rowValues.put(TaskSchema.ID, newTask.getId());
 		rowValues.put(TaskSchema.TITLE, modifiedTask.getTaskTitle());
 		rowValues.put(TaskSchema.DESCRIPTION, modifiedTask.getDescription());
 		rowValues.put(TaskSchema.PRIORITY, modifiedTask.getPriority());
-//		rowValues.put(TaskSchema.DUE_DATE,
-//				dateFormat.format(modifiedTask.getDueDate()));
+		 rowValues.put(TaskSchema.DUE_DATE,
+		 dateFormat.format(modifiedTask.getDueDate()));
 
 		database.update(TaskSchema.NAME, rowValues, TaskSchema.ID + " = "
 				+ modifiedTask.getId(), null);
@@ -83,82 +80,82 @@ public class TasksDbAdapter {
 				TaskSchema.ID + " = " + taskToDelete.getId(), null);
 
 	}
-	
-	public ArrayList<Task> getAllTasksByDate()
-	{
+
+	public ArrayList<Task> getAllTasksByDate() {
+		Log.d(LOG_TAG,"sorting by date");
 		Cursor returnedData;
 		ArrayList<Task> listOfTasks = new ArrayList<Task>();
 		returnedData = database.query(TaskSchema.NAME, new String[] {
 				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
-				TaskSchema.PRIORITY /*, TaskSchema.DUE_DATE */ }, null, null, null,
-				null, TaskSchema.DUE_DATE+" DESC", null);
+				TaskSchema.PRIORITY, TaskSchema.DUE_DATE }, null, null,
+				null, null, TaskSchema.DUE_DATE , null);
 
 		while (returnedData.moveToNext()) {
 			Task currentTask;
 			int id = returnedData.getInt(returnedData
 					.getColumnIndexOrThrow(TaskSchema.ID));
-//			String dueDateStr = returnedData.getString(returnedData
-//					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
-//			Log.d(LOG_TAG, "due date: "+dueDateStr);
-//			Date dueDate = null;
-//			try {
-//				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
-//			} catch (ParseException e) {
-//				Log.d(LOG_TAG, "Error: problem with parsing date");
-//				e.printStackTrace();
-//			}
+			String dueDateStr = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
+			Log.d(LOG_TAG, "due date: " + dueDateStr);
+			Date dueDate = null;
+			try {
+				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
+			} catch (ParseException e) {
+				Log.d(LOG_TAG, "Error: problem with parsing date");
+				e.printStackTrace();
+			}
 			int priority = returnedData.getInt(returnedData
 					.getColumnIndexOrThrow(TaskSchema.PRIORITY));
 			String taskTitle = returnedData.getString(returnedData
 					.getColumnIndexOrThrow(TaskSchema.TITLE));
 			String taskDescription = returnedData.getString(returnedData
 					.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
-			Date dueDate = null;
+			// Date dueDate = null;
 			currentTask = new Task(id, taskDescription, taskTitle, priority,
 					dueDate);
 			listOfTasks.add(currentTask);
 		}
 		returnedData.close();
-		
+
 		return listOfTasks;
 	}
-	
-	public ArrayList<Task> getAllTasksByPriority()
-	{
+
+	public ArrayList<Task> getAllTasksByPriority() {
+		Log.d(LOG_TAG,"sorting by priority");
 		Cursor returnedData;
 		ArrayList<Task> listOfTasks = new ArrayList<Task>();
 		returnedData = database.query(TaskSchema.NAME, new String[] {
 				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
-				TaskSchema.PRIORITY /*, TaskSchema.DUE_DATE */ }, null, null, null,
-				null, TaskSchema.PRIORITY+" DESC", null);
+				TaskSchema.PRIORITY, TaskSchema.DUE_DATE }, null, null,
+				null, null, TaskSchema.PRIORITY + " DESC", null);
 
 		while (returnedData.moveToNext()) {
 			Task currentTask;
 			int id = returnedData.getInt(returnedData
 					.getColumnIndexOrThrow(TaskSchema.ID));
-//			String dueDateStr = returnedData.getString(returnedData
-//					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
-//			Log.d(LOG_TAG, "due date: "+dueDateStr);
-//			Date dueDate = null;
-//			try {
-//				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
-//			} catch (ParseException e) {
-//				Log.d(LOG_TAG, "Error: problem with parsing date");
-//				e.printStackTrace();
-//			}
+			String dueDateStr = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
+			Log.d(LOG_TAG, "due date: " + dueDateStr);
+			Date dueDate = null;
+			try {
+				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
+			} catch (ParseException e) {
+				Log.d(LOG_TAG, "Error: problem with parsing date");
+				e.printStackTrace();
+			}
 			int priority = returnedData.getInt(returnedData
 					.getColumnIndexOrThrow(TaskSchema.PRIORITY));
 			String taskTitle = returnedData.getString(returnedData
 					.getColumnIndexOrThrow(TaskSchema.TITLE));
 			String taskDescription = returnedData.getString(returnedData
 					.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
-			Date dueDate = null;
+			// Date dueDate = null;
 			currentTask = new Task(id, taskDescription, taskTitle, priority,
 					dueDate);
 			listOfTasks.add(currentTask);
 		}
 		returnedData.close();
-		
+
 		return listOfTasks;
 	}
 
@@ -167,36 +164,38 @@ public class TasksDbAdapter {
 		ArrayList<Task> listOfTasks = new ArrayList<Task>();
 		returnedData = database.query(TaskSchema.NAME, new String[] {
 				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
-				TaskSchema.PRIORITY /*, TaskSchema.DUE_DATE */ }, null, null, null,
-				null, null, null);	
+				TaskSchema.PRIORITY , TaskSchema.DUE_DATE}, null, null,
+				null, null, TaskSchema.DUE_DATE, null);
 
 		while (returnedData.moveToNext()) {
 			Task currentTask;
 			int id = returnedData.getInt(returnedData
 					.getColumnIndexOrThrow(TaskSchema.ID));
-//			String dueDateStr = returnedData.getString(returnedData
-//					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
-//			Log.d(LOG_TAG, "due date: "+dueDateStr);
-//			Date dueDate = null;
-//			try {
-//				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
-//			} catch (ParseException e) {
-//				Log.d(LOG_TAG, "Error: problem with parsing date");
-//				e.printStackTrace();
-//			}
+			String dueDateStr = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
+			Log.d(LOG_TAG, "due date: " + dueDateStr);
+			Date dueDate = null;
+			try {
+				SimpleDateFormat dateFormat = new SimpleDateFormat(
+						"yy-MM-dd");
+				dueDate = (Date) dateFormat.getInstance().parse(dueDateStr);
+			} catch (ParseException e) {
+				Log.d(LOG_TAG, "Error: problem with parsing date");
+				e.printStackTrace();
+			}
 			int priority = returnedData.getInt(returnedData
 					.getColumnIndexOrThrow(TaskSchema.PRIORITY));
 			String taskTitle = returnedData.getString(returnedData
 					.getColumnIndexOrThrow(TaskSchema.TITLE));
 			String taskDescription = returnedData.getString(returnedData
 					.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
-			Date dueDate = null;
+			// Date dueDate = null;
 			currentTask = new Task(id, taskDescription, taskTitle, priority,
 					dueDate);
 			listOfTasks.add(currentTask);
 		}
 		returnedData.close();
-		
+
 		return listOfTasks;
 	}
 
