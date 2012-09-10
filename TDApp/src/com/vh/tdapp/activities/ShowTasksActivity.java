@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.vh.tdapp.R;
@@ -53,94 +54,53 @@ public class ShowTasksActivity extends ListActivity {
 
 			}
 		});
-		
-		Button sortByDateButton = (Button)findViewById(R.id.sort_by_date_button);
-		
+
+		Button sortByDateButton = (Button) findViewById(R.id.sort_by_date_button);
+
 		sortByDateButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			public void onClick(View v) {
 				tasks = tasksAdapter.getAllTasksByDate();
 				fillData();
-				
+
 			}
 		});
-		
-		Button sortByPriorityButton = (Button)findViewById(R.id.sort_by_priority_button);
-		
+
+		Button sortByPriorityButton = (Button) findViewById(R.id.sort_by_priority_button);
+
 		sortByPriorityButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			public void onClick(View v) {
 
 				tasks = tasksAdapter.getAllTasksByPriority();
 				fillData();
 			}
 		});
-		
-		
-
 
 	}
 
 	private void fillData() {
-		
 
 		Log.d("in show tasks activity", tasks.size() + "");
 
 		setListAdapter(new TaskArrayAdapter(this, tasks));
-		
-		getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {			
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int pos, long arg3) {
-				final int position = pos;
-			
-				AlertDialog.Builder dialogBuilder = new Builder(ShowTasksActivity.this);
-				dialogBuilder.setMessage("Here are your options: ");
-				dialogBuilder.setPositiveButton("Modify Task", new DialogInterface.OnClickListener() {
-					
-					public void onClick(DialogInterface dialog, int which) {
-						modifyTask(position);
-						dialog.dismiss();
-						
-					}
-				});
-				dialogBuilder.setNegativeButton("Delete Task", new DialogInterface.OnClickListener() {
-					
-					public void onClick(DialogInterface dialog, int which) {
-						deleteTask(position);
-						dialog.dismiss();
-						
-					}
-				});
-				dialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-					
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						
-					}
-				});
-				
-				dialogBuilder.show();
-				return false;				
-			}
-		});
+
 	}
 
-		
-	private void deleteTask(int position)
-	{
-		Log.d("task id", position+"");
+	private void deleteTask(int position) {
+		Log.d("task id", position + "");
 		Task taskToDelete = tasks.get(position);
 		tasksAdapter.deleteTask(taskToDelete);
+		fillData();
 	}
-	
-	private void modifyTask(int position)
-	{
-		Log.d("task id", position+"");
+
+	private void modifyTask(int position) {
+		Log.d("task id", position + "");
 		Task taskToModify = tasks.get(position);
-		//need to call edit task
+		// need to call edit task
 		tasksAdapter.modifyTask(taskToModify);
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -164,6 +124,8 @@ public class ShowTasksActivity extends ListActivity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
+
+			final int pos = position;
 			View rowView = convertView;
 			if (rowView == null) {
 				LayoutInflater inflater = (LayoutInflater) context
@@ -196,6 +158,48 @@ public class ShowTasksActivity extends ListActivity {
 
 				rowView = convertView;
 			}
+			rowView.setOnClickListener(new View.OnClickListener() {
+
+				public void onClick(View v) {
+
+					Log.d("v debuggin", "item clicked" + pos);
+					AlertDialog.Builder dialogBuilder = new Builder(
+							ShowTasksActivity.this);
+					dialogBuilder.setMessage("Here are your options: ");
+					dialogBuilder.setPositiveButton("Modify Task",
+							new DialogInterface.OnClickListener() {
+
+								public void onClick(DialogInterface dialog,
+										int which) {
+									modifyTask(pos);
+									dialog.dismiss();
+
+								}
+							});
+					dialogBuilder.setNegativeButton("Delete Task",
+							new DialogInterface.OnClickListener() {
+
+								public void onClick(DialogInterface dialog,
+										int which) {
+									deleteTask(pos);
+									dialog.dismiss();
+
+								}
+							});
+					dialogBuilder.setNeutralButton("Cancel",
+							new DialogInterface.OnClickListener() {
+
+								public void onClick(DialogInterface dialog,
+										int which) {
+									dialog.dismiss();
+
+								}
+							});
+
+					dialogBuilder.show();
+
+				}
+			});
 
 			return rowView;
 		}
