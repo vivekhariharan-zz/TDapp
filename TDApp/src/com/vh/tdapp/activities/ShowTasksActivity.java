@@ -91,14 +91,18 @@ public class ShowTasksActivity extends ListActivity {
 		Log.d("task id", position + "");
 		Task taskToDelete = tasks.get(position);
 		tasksAdapter.deleteTask(taskToDelete);
+		tasks = tasksAdapter.getAllTasks();
 		fillData();
 	}
 
 	private void modifyTask(int position) {
 		Log.d("task id", position + "");
 		Task taskToModify = tasks.get(position);
+		Intent callEditTask = new Intent(ShowTasksActivity.this,
+				EditTaskActivity.class);
+		startActivity(callEditTask);
 		// need to call edit task
-		tasksAdapter.modifyTask(taskToModify);
+		// tasksAdapter.modifyTask(taskToModify);
 	}
 
 	@Override
@@ -171,7 +175,12 @@ public class ShowTasksActivity extends ListActivity {
 
 								public void onClick(DialogInterface dialog,
 										int which) {
-									modifyTask(pos);
+									Intent callModifyTaskIntent = new Intent(
+											ShowTasksActivity.this,
+											EditTaskActivity.class);
+									callModifyTaskIntent.putExtra("taskId",
+											tasks.get(pos).getId() + "");
+									startActivity(callModifyTaskIntent);
 									dialog.dismiss();
 
 								}
@@ -200,7 +209,6 @@ public class ShowTasksActivity extends ListActivity {
 
 				}
 			});
-
 			return rowView;
 		}
 	}
