@@ -76,13 +76,30 @@
             android:id="@+id/button_box"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:weightSum="1"
             android:layout_below="@id/list_box" >
+            
+            <Button
+                android:id="@+id/sort_by_date_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.34"
+                android:gravity="center"
+                android:text="@string/sort_by_date_str"/>
 
+            <Button
+                android:id="@+id/sort_by_priority_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:gravity="center"
+                android:text="@string/sort_by_priority_str"/>
+            
             <Button
                 android:id="@+id/add_task_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_weight="0.33"
                 android:gravity="center"
                 android:text="@string/add_button_str" />
         </LinearLayout>

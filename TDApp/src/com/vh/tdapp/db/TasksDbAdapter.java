@@ -83,14 +83,15 @@ public class TasksDbAdapter {
 				TaskSchema.ID + " = " + taskToDelete.getId(), null);
 
 	}
-
-	public ArrayList<Task> getAllTasks() {
+	
+	public ArrayList<Task> getAllTasksByDate()
+	{
 		Cursor returnedData;
 		ArrayList<Task> listOfTasks = new ArrayList<Task>();
 		returnedData = database.query(TaskSchema.NAME, new String[] {
 				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
 				TaskSchema.PRIORITY /*, TaskSchema.DUE_DATE */ }, null, null, null,
-				null, null, null);
+				null, TaskSchema.DUE_DATE+" DESC", null);
 
 		while (returnedData.moveToNext()) {
 			Task currentTask;
@@ -118,8 +119,84 @@ public class TasksDbAdapter {
 			listOfTasks.add(currentTask);
 		}
 		returnedData.close();
+		
+		return listOfTasks;
+	}
+	
+	public ArrayList<Task> getAllTasksByPriority()
+	{
+		Cursor returnedData;
+		ArrayList<Task> listOfTasks = new ArrayList<Task>();
+		returnedData = database.query(TaskSchema.NAME, new String[] {
+				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
+				TaskSchema.PRIORITY /*, TaskSchema.DUE_DATE */ }, null, null, null,
+				null, TaskSchema.PRIORITY+" DESC", null);
 
-		Log.d("vivek debuggins", listOfTasks.size()+"");
+		while (returnedData.moveToNext()) {
+			Task currentTask;
+			int id = returnedData.getInt(returnedData
+					.getColumnIndexOrThrow(TaskSchema.ID));
+//			String dueDateStr = returnedData.getString(returnedData
+//					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
+//			Log.d(LOG_TAG, "due date: "+dueDateStr);
+//			Date dueDate = null;
+//			try {
+//				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
+//			} catch (ParseException e) {
+//				Log.d(LOG_TAG, "Error: problem with parsing date");
+//				e.printStackTrace();
+//			}
+			int priority = returnedData.getInt(returnedData
+					.getColumnIndexOrThrow(TaskSchema.PRIORITY));
+			String taskTitle = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.TITLE));
+			String taskDescription = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
+			Date dueDate = null;
+			currentTask = new Task(id, taskDescription, taskTitle, priority,
+					dueDate);
+			listOfTasks.add(currentTask);
+		}
+		returnedData.close();
+		
+		return listOfTasks;
+	}
+
+	public ArrayList<Task> getAllTasks() {
+		Cursor returnedData;
+		ArrayList<Task> listOfTasks = new ArrayList<Task>();
+		returnedData = database.query(TaskSchema.NAME, new String[] {
+				TaskSchema.ID, TaskSchema.TITLE, TaskSchema.DESCRIPTION,
+				TaskSchema.PRIORITY /*, TaskSchema.DUE_DATE */ }, null, null, null,
+				null, null, null);	
+
+		while (returnedData.moveToNext()) {
+			Task currentTask;
+			int id = returnedData.getInt(returnedData
+					.getColumnIndexOrThrow(TaskSchema.ID));
+//			String dueDateStr = returnedData.getString(returnedData
+//					.getColumnIndexOrThrow(TaskSchema.DUE_DATE));
+//			Log.d(LOG_TAG, "due date: "+dueDateStr);
+//			Date dueDate = null;
+//			try {
+//				dueDate = (Date) DateFormat.getInstance().parse(dueDateStr);
+//			} catch (ParseException e) {
+//				Log.d(LOG_TAG, "Error: problem with parsing date");
+//				e.printStackTrace();
+//			}
+			int priority = returnedData.getInt(returnedData
+					.getColumnIndexOrThrow(TaskSchema.PRIORITY));
+			String taskTitle = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.TITLE));
+			String taskDescription = returnedData.getString(returnedData
+					.getColumnIndexOrThrow(TaskSchema.DESCRIPTION));
+			Date dueDate = null;
+			currentTask = new Task(id, taskDescription, taskTitle, priority,
+					dueDate);
+			listOfTasks.add(currentTask);
+		}
+		returnedData.close();
+		
 		return listOfTasks;
 	}
 

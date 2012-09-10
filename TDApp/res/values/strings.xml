@@ -13,5 +13,7 @@
     <string name="task_title_edit_str">Task Title</string>
     <string name="done_button_str">Done</string>
     <string name="cancel_button_str">Cancel</string>
+    <string name="sort_by_date_str">Sort by Date</string>
+    <string name="sort_by_priority_str">Sort by Priority</string>
 
 </resources>

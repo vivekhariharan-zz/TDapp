@@ -64,7 +64,7 @@ public class AddTaskActivity extends Activity {
 
 			public void onClick(View v) {
 
-				if (taskTitle.getText().toString().trim() == "") {
+				if (taskTitle.getText().toString().length() <=0) {
 					builder.show();
 				} else {
 					Log.d("vivek debug", ""+dueDatePicker.getYear());
@@ -93,7 +93,4 @@ public class AddTaskActivity extends Activity {
 			}
 		});
 	}
-	
-	
-
 }
